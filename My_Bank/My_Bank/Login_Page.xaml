@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="My_Bank.Login_Page">
     <ContentPage.Content>
-        <StackLayout Padding="30,30,30,30">
-            <Label x:Name="apiLabel"/>
-            <Label Text="Login" FontSize="Large" FontAttributes="Bold"
-                VerticalOptions="Start" 
-                HorizontalOptions="StartAndExpand" />
-            <Label x:Name="emailLabel" Text=" Email:"/>
-            <Entry Placeholder=" Enter email address..."/>
-            <Label Text=" Password:"/>
-            <Entry Placeholder=" Enter password..." IsPassword="True"/>
-            <Button Text="Login" Clicked="NavigateButton_HomeScreenOnClicked"/>
-            <Button Text=" Create Account" Clicked="NavigateButton_CreateAccountOnClicked"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="30,30,30,30">
+                <Label x:Name="apiLabel"/>
+                <Label Text="Login" FontSize="Large" FontAttributes="Bold"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="StartAndExpand" />
+                <Label x:Name="emailLabel" Text=" Email:"/>
+                <Entry Placeholder=" Enter email address..."/>
+                <Label Text=" Password:"/>
+                <Entry Placeholder=" Enter password..." IsPassword="True"/>
+                <Button Text="Login" Clicked="NavigateButton_HomeScreenOnClicked"/>
+                <Button Text=" Create Account" Clicked="NavigateButton_CreateAccountOnClicked"/>
+            </StackLayout>  
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

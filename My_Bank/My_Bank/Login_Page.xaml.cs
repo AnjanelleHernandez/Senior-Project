@@ -14,11 +14,12 @@ namespace My_Bank
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Login_Page : ContentPage
 	{
+
         static HttpClient client = new HttpClient();
 
         public Login_Page ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
             //Task<string> task1 = ApiConnection();
             //apiLabel.Text = task1.Result;
            
@@ -38,10 +39,19 @@ namespace My_Bank
             }
             return Response;
         }
-        private async void NavigateButton_HomeScreenOnClicked(object sender, EventArgs e)
+        async void NavigateButton_HomeScreenOnClicked(object sender, EventArgs e)
         {
             //App.Current.MainPage = new Home_Screen();
-            await Navigation.PushAsync(new Home_Screen());
+            //await Navigation.PushAsync(new Home_Screen());
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+               new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage result = await client.GetAsync("http://api/values");
+            if (result.IsSuccessStatusCode)
+            {
+                apiLabel.Text = result.ToString();
+            }
+
         }
         private async void NavigateButton_CreateAccountOnClicked(object sender, EventArgs e)
         {

@@ -12,7 +12,7 @@ namespace My_Bank
 {
 	public partial class App : Application
 	{
-        static HttpClient client = new HttpClient();
+        //static HttpClient client = new HttpClient();
 
         public App ()
 		{
