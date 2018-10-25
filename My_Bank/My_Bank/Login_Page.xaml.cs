@@ -20,37 +20,35 @@ namespace My_Bank
         public Login_Page ()
 		{
 			InitializeComponent();
-            //Task<string> task1 = ApiConnection();
-            //apiLabel.Text = task1.Result;
            
         }
+
         private async Task<string> ApiConnection()
         {
-            client.BaseAddress = new Uri("http://localhost:57525/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.BaseAddress = new Uri("https://localhost:57525/");
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(
+            //    new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = await client.GetAsync("api/values");
-            string Response = "";
-            if (response.IsSuccessStatusCode)
-            {
-               Response = await response.Content.ReadAsStringAsync();
-            }
-            return Response;
+            //HttpResponseMessage response = await client.GetAsync("api/values");
+            //string Response = "";
+            //if (response.IsSuccessStatusCode)
+            //{
+            //   Response = await response.Content.ReadAsStringAsync();
+            //}
+            //return Response;
+            var client = new HttpClient();
+            //string result = await client.GetStringAsync("http://jsonplaceholder.typicocde.com/todos/1");
+            //return result;
+            return await client.GetStringAsync("http://jsonplaceholder.typicocde.com/todos/1");
         }
-        async void NavigateButton_HomeScreenOnClicked(object sender, EventArgs e)
+          async Task NavigateButton_HomeScreenOnClicked(object sender, EventArgs e)
         {
             //App.Current.MainPage = new Home_Screen();
             //await Navigation.PushAsync(new Home_Screen());
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-               new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage result = await client.GetAsync("http://api/values");
-            if (result.IsSuccessStatusCode)
-            {
-                apiLabel.Text = result.ToString();
-            }
+
+            var label = await ApiConnection();
+            apiLabel.Text = label.ToString();
 
         }
         private async void NavigateButton_CreateAccountOnClicked(object sender, EventArgs e)
